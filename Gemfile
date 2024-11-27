@@ -74,5 +74,5 @@ end
 gem 'hamlit-rails', '~> 0.2.3'
 gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
-gem 'omniauth'
+gem 'omniauth', '~>2.1.1'
 gem 'omniauth-github'

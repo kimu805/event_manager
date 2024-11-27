@@ -297,7 +297,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   mysql2 (~> 0.5)
-  omniauth
+  omniauth (~> 2.1.1)
   omniauth-github
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.6)
