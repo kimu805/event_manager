@@ -15,5 +15,10 @@
         %ul.navbar-nav
           %li.nav-item
             = button_to "GitHubでログイン", "/auth/github", class: "nav-link", data: { turbo: false }
+    - if flash[:notice]
+      .alert.alert-success.alert-dismissible.fade.show(role="alert")
+        .container
+          = flash[:notice]
+          %button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
     .container 
       = yield
