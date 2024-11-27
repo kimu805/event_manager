@@ -2,11 +2,12 @@ class SessionsController < ApplicationController
 
   def github
     user_info = request.env["omniauth.auth"]
+    Rails.logger.info "GitHub user info: #{ user_info.inspect }"
 
-    user = User.find_or_create_by(provider: user_info["provider"], uid: user_info["uid"]) do |u|
-      u.name = user_info["info"]["name"]
-      u.email = user_info["info"]["email"]
-    end
+    user = User.find_or_initialize_by(provider: user_info["provider"], uid: user_info["uid"])
+    user.name = user_info["info"]["name"]
+    user.image_url = user_info["info"]["image"]
+    
 
     session[:user_id] = user.id
     redirect_to root_path, notice: "ログインしました！"
