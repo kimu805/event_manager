@@ -14,6 +14,6 @@
         = link_to "EventManager", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
           %li.nav-item
-            = link_to "GitHubでログイン", "/auth/github", class: "nav-link"
+            = button_to "GitHubでログイン", "/auth/github", class: "nav-link", data: { turbo: false }
     .container 
       = yield
