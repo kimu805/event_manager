@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  # association
+  
   # validation
   with_options presence:true do
     validates :name, length: { maximum: 50 }
