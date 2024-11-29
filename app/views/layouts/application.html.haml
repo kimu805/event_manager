@@ -15,7 +15,7 @@
         %ul.navbar-nav
           - if logged_in?
             %li.nav-item
-              = link_to "イベントを作成",  
+              = link_to "イベントを作成", new_event_path, class: "nav-link"
             %li.nav-item
               = link_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete }
           - else
