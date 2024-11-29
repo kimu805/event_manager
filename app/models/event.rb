@@ -9,10 +9,10 @@ class Event < ApplicationRecord
     validates :start_at
     validates :end_at
   end
-  validates :start_should_be_before_end
+  validate :start_at_should_be_before_end_at
 
   private
-  def start_should_be_before_end
+  def start_at_should_be_before_end_at
     return unless start_at && end_at
 
     if start_at >= end_at
