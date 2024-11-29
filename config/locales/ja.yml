@@ -2,3 +2,13 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+      event:
+        name: イベント名
+        place: 場所
+        content: 内容
+        start_at: 開始時間
+        end_at: 終了時間
