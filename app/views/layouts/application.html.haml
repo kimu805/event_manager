@@ -15,7 +15,7 @@
         %ul.navbar-nav
           - if logged_in?
             %li.nav-item
-              = button_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete }
+              = link_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete }
           - else
             %li.nav-item
               = button_to "GitHubでログイン", "/auth/github", class: "nav-link", data: { turbo: false }
