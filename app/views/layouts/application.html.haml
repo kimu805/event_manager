@@ -13,8 +13,12 @@
       .container 
         = link_to "EventManager", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
-          %li.nav-item
-            = button_to "GitHubでログイン", "/auth/github", class: "nav-link", data: { turbo: false }
+          - if logged_in?
+            %li.nav-item
+              = button_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete }
+          - else
+            %li.nav-item
+              = button_to "GitHubでログイン", "/auth/github", class: "nav-link", data: { turbo: false }
     - if flash[:notice]
       .alert.alert-success.alert-dismissible.fade.show(role="alert")
         .container
