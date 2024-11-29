@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate, only: :github
 
   def github
     user_info = request.env["omniauth.auth"]
