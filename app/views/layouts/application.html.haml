@@ -26,5 +26,10 @@
         .container
           = flash[:notice]
           %button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+    - elsif flash[:alert]
+      .alert.alert-danger.alert-dismissible.fade.show(role="alert")
+        .container
+          = flash[:alert]
+          %button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
     .container 
       = yield
