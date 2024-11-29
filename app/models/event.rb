@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   # association
+  belongs_to :owner, class_name: "User"
   
   # validation
   with_options presence:true do
