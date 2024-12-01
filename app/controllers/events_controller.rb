@@ -16,6 +16,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @ticket = @event.tickets.build
   end
 
   def edit
