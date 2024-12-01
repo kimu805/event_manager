@@ -3,5 +3,5 @@ class Ticket < ApplicationRecord
   belongs_to :event
 
   # validation
-  validates :text, length: { maximum: 30 }, allow_blank: true
+  validates :comment, length: { maximum: 30 }, allow_blank: true
 end
