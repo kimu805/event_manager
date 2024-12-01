@@ -25,7 +25,7 @@
       = link_to "編集", edit_event_path(@event), class: "btn btn-info btn-lg btn-block"
       = link_to "削除", event_path(@event), data: { turbo_confirm: "「#{ @event.name }」を本当に削除しますか？", turbo_method: :delete }, class: "btn btn-danger btn-lg btn-block"
     - if @have_ticket
-      = link_to "参加キャンセル", event_ticket_path(@event), data: { turbo_method: :delete }, class: "btn btn-warning btn-lg btn-block"
+      = link_to "参加キャンセル", event_ticket_path(@event), data: { turbo_method: :delete }, class: "btn btn-warning btn-lg btn-block mt-3"
     - elsif current_user
       %button.btn.btn-primary.btn-lg.btn-block.mt-3{ "data-bs-toggle": "modal", "data-bs-target": "#createTicket" }
         参加する
