@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def show
     @ticket = @event.tickets.build
+    @tickets = @event.tickets.includes(:user)
   end
 
   def edit
