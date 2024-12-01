@@ -16,6 +16,9 @@ class EventsController < ApplicationController
   end
 
   def show
+    @ticket = @event.tickets.build
+    @have_ticket = current_user && current_user.tickets.find_by(event: @event)
+    @tickets = @event.tickets.includes(:user)
   end
 
   def edit

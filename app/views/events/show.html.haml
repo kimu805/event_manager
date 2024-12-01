@@ -17,10 +17,43 @@
     .card.mb-2 
       %h5.card-header 主催者
       .card-body 
-        = link_to("https://github.com/#{@event.owner.name}", class: "card-link", target: "_blank") do
+        = link_to(url_for_github(@event.owner), class: "card-link", target: "_blank") do
           = image_tag @event.owner.image_url, class: "img-fluid rounded-circle border border-secondary shadow h-auto", style: "width: 50px; height: 50px;"
           = "@#{@event.owner.name}"
   .col-4
     - if current_user && current_user == @event.owner
       = link_to "編集", edit_event_path(@event), class: "btn btn-info btn-lg btn-block"
       = link_to "削除", event_path(@event), data: { turbo_confirm: "「#{ @event.name }」を本当に削除しますか？", turbo_method: :delete }, class: "btn btn-danger btn-lg btn-block"
+    - if @have_ticket
+      = link_to "参加キャンセル", event_ticket_path(@event), data: { turbo_method: :delete }, class: "btn btn-warning btn-lg btn-block mt-3"
+    - elsif current_user
+      %button.btn.btn-primary.btn-lg.btn-block.mt-3{ "data-bs-toggle": "modal", "data-bs-target": "#createTicket" }
+        参加する
+      .modal.fade#createTicket
+        .modal-dialog
+          .modal-content
+            .modal-header.d-flex.justify-content-between
+              %h4.modal-title#dialogHeader 参加コメント
+              %button.close{ type: "button", "data-bs-dismiss": "modal" } &times;
+            = form_with(model: @ticket, url: event_tickets_path(@event)) do |f|
+              .modal-body
+                = render "errors", { model: @ticket }
+                = f.text_field :comment, class: "form-control"
+              .modal-footer
+                %button.btn.btn-default{ type: "button", "data-bs-dismiss": "modal" }
+                  キャンセル
+                = f.button "送信", class: "btn btn-primary"
+    - else
+      = link_to "参加する", new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block"
+    %hr
+    .card.mb-2 
+      %h5.card-header 参加者
+      %ul.list-group.list-group-flush
+        - @tickets.each do |ticket|
+          %li.list-group-item
+            = link_to(url_for_github(ticket.user), class: "card-link") do
+              = image_tag ticket.user.image_url, width: 20, height: 20
+              = "@#{ ticket.user.name }"
+            = ticket.comment
+
+= link_to "back", :back, class: "link-secondary"
