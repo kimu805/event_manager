@@ -1,10 +1,11 @@
 class TicketsController < ApplicationController
+  before_action :set_event
+
   def new
     raise ActionController::RoutingError, "ログイン状態でTicketsController#newにアクセス"
   end
 
   def create
-    @event = Event.find(params[:event_id])
     @ticket = @event.tickets.build(event_params)
     if @ticket.save
       redirect_to @event, notice: "「#{ @event.name }」に参加表明しました"
@@ -13,9 +14,19 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    @ticket = Ticket.find(event_id: @event.id, user_id: current_user.id)
+    @ticket.destroy!
+    redirect_to event_path(@event.id), notice: "「#{ @event.name }」への参加をキャンセルしました"
+  end
+
   private
 
   def event_params
     params.require(:ticket).permit(:comment).merge(user_id: current_user.id)
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end
