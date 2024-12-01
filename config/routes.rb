@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   get "/auth/failure", to: redirect("/")
   delete "/logout", to: "sessions#destroy"
 
+  # mypage
+  resources :users, only: :show
+
   resources :events
 end

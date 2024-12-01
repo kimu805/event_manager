@@ -14,8 +14,8 @@
         = link_to "EventManager", root_path, class: "navbar-brand mr-auto"
         %ul.navbar-nav
           - if current_user 
-            %li.nav-item.nav-link
-              = current_user.name
+            %li.nav-item
+              = link_to current_user.name, user_path(current_user), class: "nav-link"
             %li.nav-item
               = link_to "イベントを作成", new_event_path, class: "nav-link"
             %li.nav-item
