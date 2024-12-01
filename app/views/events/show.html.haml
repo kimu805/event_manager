@@ -17,7 +17,7 @@
     .card.mb-2 
       %h5.card-header 主催者
       .card-body 
-        = link_to("https://github.com/#{@event.owner.name}", class: "card-link", target: "_blank") do
+        = link_to(url_for_github(@event.owner), class: "card-link", target: "_blank") do
           = image_tag @event.owner.image_url, class: "img-fluid rounded-circle border border-secondary shadow h-auto", style: "width: 50px; height: 50px;"
           = "@#{@event.owner.name}"
   .col-4
@@ -43,5 +43,15 @@
                 = f.button "送信", class: "btn btn-primary"
     - else
       = link_to "参加する", new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block"
+    %hr
+    .card.mb-2 
+      %h5.card-header 参加者
+        %ul.list-group.list-group-flush
+          - @tickets.each do |ticket|
+            %li.list-group-item
+              = link_to(url_for_github(ticket.user), class: "card-link") do
+                = image_tag ticket.user.image_url, width: 20, height: 20
+                = "@#{ ticket.user.name }"
+              = ticket.comment
 
 = link_to "back", :back, class: "link-secondary"
