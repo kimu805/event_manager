@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   def new
-    raise ActionController::Routingerror, "ログイン状態でTicketsController#newにアクセス"
+    raise ActionController::RoutingError, "ログイン状態でTicketsController#newにアクセス"
   end
 
   def create
@@ -8,12 +8,14 @@ class TicketsController < ApplicationController
     @ticket = @event.tickets.build(event_params)
     if @ticket.save
       redirect_to @event, notice: "「#{ @event.name }」に参加表明しました"
+    else
+      render "events/show", status: :unprocessable_entity
     end
   end
 
   private
 
   def event_params
-    params.require(:ticket).permit(:text).merge(user_id: current_user.id)
+    params.require(:ticket).permit(:comment).merge(user_id: current_user.id)
   end
 end
