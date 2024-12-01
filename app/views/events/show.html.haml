@@ -33,9 +33,9 @@
             .modal-header.d-flex.justify-content-between
               %h4.modal-title#dialogHeader 参加コメント
               %button.close{ type: "button", "data-bs-dismiss": "modal" } &times;
-            = form_with(model: @event.tickets.build, url: event_tickets_path(@event)) do |f|
+            = form_with(model: @ticket, url: event_tickets_path(@event)) do |f|
               .modal-body
-                #createTicketErrors
+                = render "errors", { model: @ticket }
                 = f.text_field :comment, class: "form-control"
               .modal-footer
                 %button.btn.btn-default{ type: "button", "data-bs-dismiss": "modal" }
