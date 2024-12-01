@@ -6,8 +6,8 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = @event.tickets.build(event_params)
-    if @ticket.save
+    ticket = @event.tickets.build(event_params)
+    if ticket.save
       redirect_to @event, notice: "「#{ @event.name }」に参加表明しました"
     else
       render "events/show", status: :unprocessable_entity
@@ -15,8 +15,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find(event_id: @event.id, user_id: current_user.id)
-    @ticket.destroy!
+    ticket = current_user.tickets.find_by(event_id: params[:event_id])
+    ticket.destroy!
     redirect_to event_path(@event.id), notice: "「#{ @event.name }」への参加をキャンセルしました"
   end
 
