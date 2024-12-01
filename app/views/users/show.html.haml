@@ -3,7 +3,7 @@
     .col-md-4
       .card
         .card-body.text-center
-          - if @user.icon.attached?
+          - if @user.image_url
             = image_tag @user.image_url, class: "img-fluid rounded-circle border border-secondary shadow h-auto", style: "width: 50px; height: 50px;"
           %h3= @user.name
     .col-md-8
@@ -13,9 +13,8 @@
           - if @events.any?
             %ul.list-group
               - @events.each do |event|
-                %li.list-group-item
-                  %strong= event.title
-                  %p= event.content
-                  %small.text-muted= event.created_at.strftime("%Y-%m-%d %H:%M")
+                = link_to(event, class: "list-group-item list-group-item-action") do
+                  %h5.list-group-item-heading= event.name
+                  %p.mb-1= "#{ l event.start_at } - #{ l event.end_at } "
           - else
             %p.text-muted イベントはまだありません。
