@@ -4,9 +4,7 @@
       .card
         .card-body.text-center
           - if @user.icon.attached?
-            = image_tag @user.icon, class: "img-fluid rounded-circle mb-3", alt: "User Icon", style: "width: 150px; height: 150px;"
-          - else
-            = image_tag "default_icon.png", class: "img-fluid rounded-circle mb-3", alt: "Default Icon", style: "width: 150px; height: 150px;"
+            = image_tag @user.image_url, class: "img-fluid rounded-circle border border-secondary shadow h-auto", style: "width: 50px; height: 50px;"
           %h3= @user.name
     .col-md-8
       .card
