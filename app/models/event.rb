@@ -15,6 +15,7 @@ class Event < ApplicationRecord
 
   # scope
   scope :future, -> { where( ":now < start_at", now: Time.zone.now ) }
+  scope :start_at_order, -> { order("start_at")}
 
   private
   def start_at_should_be_before_end_at
