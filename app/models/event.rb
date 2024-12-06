@@ -13,6 +13,9 @@ class Event < ApplicationRecord
   end
   validate :start_at_should_be_before_end_at
 
+  # scope
+  scope :future, -> { where( ":now < start_at", now: Time.zone.now ) }
+
   private
   def start_at_should_be_before_end_at
     return unless start_at && end_at
