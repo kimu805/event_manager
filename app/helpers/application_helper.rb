@@ -1,5 +1,5 @@
 module ApplicationHelper
   def url_for_github(user)
-    "https://github/#{ user.name }"
+    "https://github.com/#{ user.name }"
   end
 end
