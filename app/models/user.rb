@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # association
   has_many :created_events, class_name: "Event", foreign_key: "owner_id", dependent: :nullify
   has_many :tickets, dependent: :nullify
-  has_many :participating_events, thorough: :tickets, source: :event
+  has_many :participating_events, through: :tickets, source: :event
 
   private
 
