@@ -19,7 +19,7 @@
             %li.nav-item
               = link_to "イベントを作成", new_event_path, class: "nav-link"
             %li.nav-item
-              = link_to "退会", 
+              = link_to "退会", new_retirement_path, class: "nav-link"
             %li.nav-item
               = link_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete }
           - else
