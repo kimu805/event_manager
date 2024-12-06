@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # mypage
   resources :users, only: :show
-
   resources :events do
     resources :tickets
   end
+  resources :retirements
 end
