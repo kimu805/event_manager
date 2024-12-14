@@ -15,7 +15,7 @@ class Event < ApplicationRecord
     validates :start_at
     validates :end_at
   end
-  validates :image, content_type: [ :png, :jpg, :jpeg ]
+  validates :image, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   validate :start_at_should_be_before_end_at
 
   # scope
