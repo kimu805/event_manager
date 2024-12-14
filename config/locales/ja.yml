@@ -15,5 +15,6 @@ ja:
         content: 内容
         start_at: 開始時間
         end_at: 終了時間
+        image: 画像
       ticket:
         comment: 参加コメント
