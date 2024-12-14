@@ -20,5 +20,8 @@
   .form-group.mb-3 
     = f.label :content
     = f.text_area :content, class: "form-control", row: "10"
+  .form-group.mb-3
+    = f.label :image
+    = f.file_field :image, class: "form-control-file"
   
   = f.submit commit_text, class: "btn btn-primary"
