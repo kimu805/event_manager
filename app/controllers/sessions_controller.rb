@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     user.name = user_info["info"]["name"]
     user.image_url = user_info["info"]["image"]
     user.email = user_info["info"]["email"]
+    binding.pry
     user.save!
 
     session[:user_id] = user.id
