@@ -79,5 +79,4 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 gem 'omniauth-github'
 gem "pry-rails"
 gem "rails-i18n"
-gem "mini_magick"
 gem 'image_processing', '~> 1.2'

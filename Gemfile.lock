@@ -316,7 +316,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  mini_magick
   mysql2 (~> 0.5)
   omniauth (~> 2.1.1)
   omniauth-github
